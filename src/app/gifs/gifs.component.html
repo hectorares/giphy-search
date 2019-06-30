@@ -1,0 +1,144 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-info">
+                        <h4 class="card-title ">Gifs</h4>
+                        <!-- <p class="card-category">Modulo de venta</p> -->
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-header card-header-info">
+                                        <h4 class="card-title ">Buscar</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <!-- <form> -->
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <label
+                                                            class="mr-sm-2"
+                                                            for="inlineFormCustomSelect"
+                                                        >
+                                                            item
+                                                        </label>
+                                                        <select
+                                                            class="custom-select mr-sm-2"
+                                                            id="inlineFormCustomSelect"
+                                                            [(ngModel)]="selectedClient"
+                                                            (ngModelChange)="onChange($event)"
+                                                        >
+
+                                                            <option
+                                                                *ngFor="let client of clients"
+                                                                [ngValue]="client"
+                                                            >
+                                                                {{client.firstName}} {{client.middletName}} {{client.lastName}}
+                                                            </option>
+
+                                                        </select>
+
+                                                    </div>
+                                                </div>
+
+                                                <div
+                                                    class="row"
+                                                    *ngIf="selectedClient"
+                                                >
+                                                    <ul class="list-group">
+                                                        <li class="list-group-item">
+                                                            No. usuario: {{selectedClient?.userNumber}}
+                                                        </li>
+                                                        <li class="list-group-item">
+                                                            No. recluso: {{selectedClient?.inmateNumber}}
+                                                        </li>
+                                                        <li class="list-group-item">
+                                                            Unidad de vivienda: {{selectedClient?.housingUnit}}
+                                                        </li>
+                                                        <li class="list-group-item">
+                                                            Saldo:
+                                                            <span class="text-primary">{{selectedClient.credit | currency}}</span>
+                                                        </li>
+                                                    </ul>
+                                                    <div class="col-md-12">
+                                                        <label
+                                                            class="mr-sm-2"
+                                                            for="inlineFormCustomSelect"
+                                                        >
+                                                            Tipo de transacción
+                                                        </label>
+                                                        <select
+                                                            class="custom-select mr-sm-2"
+                                                            id="inlineFormCustomSelectt"
+                                                            [(ngModel)]="selectedTransaction"
+                                                            (ngModelChange)="onChangeTransaction($event)"
+                                                        >
+
+                                                            <option
+                                                                *ngFor="let transaction of transactions"
+                                                                [ngValue]="transaction"
+                                                            >
+                                                                {{transaction.name}}
+                                                            </option>
+
+                                                        </select>
+
+                                                    </div>
+                                                </div>
+
+                                                <!-- <div class="row">
+                                                                        <div class="col-md-12 text-center">
+                                                                            <button mat-stroked-button type="submit" class="btn btn-outline-info" [disabled]="!form.valid">Ingresar</button>
+                                                                        </div>
+                                                                </div> -->
+                                                <div class="clearfix"></div>
+                                            </div>
+                                            <!-- </form> -->
+                                        </div>
+                                        <br>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-8" *ngIf="selectedTransaction">
+                                <div
+                                    class="row"
+                                   
+                                >
+                                    <div class="col-lg-6 col-md-6 col-sm-6"  *ngFor="let product of products">
+                                        <div class="card card-stats" (click)="toSell()">
+                                            <div class="card-header card-header-info card-header-icon">
+                                                <div class="card-icon">
+                                                    <i class="material-icons">credit_card</i>
+                                                </div>
+                                                <p class="card-category">PAGO:</p>
+                                                <h3 class="card-title">{{product?.amount | currency}} MXN</h3>
+                                                <p class="card-category">
+                                                    Valor: {{product.value}} ({{product?.bonus}} bonificación)
+                                                </p>
+
+                                            </div>
+                                            <div class="card-footer">
+                                                <div class="stats">
+                                                    <strong>
+
+                                                        <p class="card-title">
+                                                            Tarjetas disponibles: {{product.available}}
+                                                        </p>
+                                                    </strong>
+                                                    </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
