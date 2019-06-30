@@ -1,2 +1,2 @@
 # giphy-search
-GIfs search app
+Gifs search app
