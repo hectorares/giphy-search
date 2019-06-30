@@ -17,12 +17,11 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 Within the download you'll find the following directories and files:
 
 ```
-material-dashboard-angular
+GIPHY SEARCH
 ├── CHANGELOG.md
 ├── LICENSE.md
 ├── README.md
 ├── angular-cli.json
-├── documentation
 ├── e2e
 ├── karma.conf.js
 ├── package-lock.json
@@ -39,30 +38,6 @@ material-dashboard-angular
 │   │   ├── components
 │   │   │   ├── components.module.ts
 │   │   │   ├── footer
-│   │   │   │   ├── footer.component.css
-│   │   │   │   ├── footer.component.html
-│   │   │   │   ├── footer.component.spec.ts
-│   │   │   │   └── footer.component.ts
-│   │   │   ├── navbar
-│   │   │   │   ├── navbar.component.css
-│   │   │   │   ├── navbar.component.html
-│   │   │   │   ├── navbar.component.spec.ts
-│   │   │   │   └── navbar.component.ts
-│   │   │   └── sidebar
-│   │   │       ├── sidebar.component.css
-│   │   │       ├── sidebar.component.html
-│   │   │       ├── sidebar.component.spec.ts
-│   │   │       └── sidebar.component.ts
-│   │   ├── dashboard
-│   │   │   ├── dashboard.component.css
-│   │   │   ├── dashboard.component.html
-│   │   │   ├── dashboard.component.spec.ts
-│   │   │   └── dashboard.component.ts
-│   │   └── user-profile
-│   │       ├── user-profile.component.css
-│   │       ├── user-profile.component.html
-│   │       ├── user-profile.component.spec.ts
-│   │       └── user-profile.component.ts -->
 │   ├── assets
 │   │   ├── css
 │   │   │   └── demo.css
