@@ -18,6 +18,8 @@ import {
   MatTooltipModule,
   MatSelectModule
 } from '@angular/material';
+import { GifsService } from './core/services/gifs.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
@@ -25,6 +27,7 @@ import {
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
+    HttpClientModule,
     ComponentsModule,
     RouterModule,
     AppRoutingModule,
@@ -40,7 +43,7 @@ import {
     AppComponent,
     GifsComponent
   ],
-  providers: [AuthService, AuthGuard],
+  providers: [AuthService, AuthGuard, GifsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
