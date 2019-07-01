@@ -10,12 +10,12 @@ declare var $: any;
   styleUrls: ['./gifs.component.css']
 })
 export class GifsComponent implements OnInit {
-  gifs: Gif;
+  gifs: Gif[];
   form = this.fb.group({
     query: ['', Validators.required],
   });
   query: string;
-  trendingGifs: Gif;
+  trendingGifs: Gif[];
   gifSelected: Gif;
   constructor(private fb: FormBuilder, public gifsService: GifsService) { }
 
@@ -24,7 +24,7 @@ export class GifsComponent implements OnInit {
   }
 
   loadTrending() {
-    this.gifsService.getTrending().then((data: Gif) => {
+    this.gifsService.getTrending().then((data: Gif[]) => {
       this.trendingGifs = data;
     }, err => {
       console.error('Err:', err);
@@ -33,7 +33,7 @@ export class GifsComponent implements OnInit {
 
   search() {
     this.query = this.form.value.query;
-    this.gifsService.search(this.query).then((data: Gif) => {
+    this.gifsService.search(this.query).then((data: Gif[]) => {
       this.gifs = data;
     }, err => {
       console.error('Err:', err);
