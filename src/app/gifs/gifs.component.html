@@ -9,7 +9,11 @@
                         <div class="row">
                             <div class="col-md-3">
                                 <div class="sidebar-wrapper">
-                                    <form class="navbar-form">
+                                    <form
+                                        class="navbar-form"
+                                        [formGroup]="form"
+                                        (ngSubmit)="search()"
+                                    >
                                         <span class="bmd-form-group">
                                             <div class="input-group no-border form-control-danger">
                                                 <mat-form-field class="example-full-width">
@@ -17,12 +21,15 @@
                                                         matInput
                                                         placeholder="Search"
                                                         type="text"
+                                                        formControlName="query"
+                                                        maxlength="50"
                                                     >
                                                 </mat-form-field>
                                                 <button
                                                     mat-raised-button
                                                     type="submit"
                                                     class="btn btn-white btn-round btn-just-icon"
+                                                    [disabled]="!form.valid"
                                                 >
                                                     <i class="material-icons">search</i>
                                                     <div class="ripple-container"></div>
@@ -36,10 +43,12 @@
                         </div>
 
                     </div>
-                    <div class="card-body">
-                        <h3>
-                            Trending
-                        </h3>
+
+                    <div
+                        class="card-body"
+                        *ngIf="gifs"
+                    >
+                        <h3>Results for {{query}}</h3>
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="row">
@@ -50,6 +59,7 @@
                                         <div
                                             class="card"
                                             style="width: 18rem;"
+                                            (click)="openGif(gif)"
                                         >
                                             <img
                                                 class="card-img-top"
@@ -61,11 +71,112 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div
+                                        class="col-lg-3 col-md-3 col-sm-3"
+                                        *ngIf="gifs && gifs.length == 0"
+                                    >
+                                        <h4>Gifs not found</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h3>Trending</h3>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div
+                                        class="col-lg-3 col-md-3 col-sm-3"
+                                        *ngFor="let tgif of trendingGifs"
+                                    >
+                                        <div
+                                            class="card"
+                                            style="width: 18rem;"
+                                            (click)="openGif(tgif)"
+                                        >
+                                            <img
+                                                class="card-img-top"
+                                                [src]="tgif.images.preview_gif.url"
+                                                alt="Card image cap"
+                                            >
+                                            <div class="card-body">
+                                                <p class="card-text">{{tgif.title}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="col-lg-3 col-md-3 col-sm-3"
+                                        *ngIf="trendingGifs && trendingGifs.length == 0"
+                                    >
+                                        <h4>Gifs not found</h4>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div
+    class="modal fade"
+    id="exampleModal"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+>
+    <div
+        class="modal-dialog"
+        role="document"
+    >
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5
+                    class="modal-title"
+                    id="exampleModalLabel"
+                >
+                    {{gifSelected?.title}}
+                </h5>
+                <button
+                    type="button"
+                    class="close"
+                    data-dismiss="modal"
+                    aria-label="Close"
+                >
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <div class="row d-flex justify-content-center">
+
+                    <div class="text-center">
+
+                        <div
+                            class="card"
+                            style="width: 22rem;"
+                            class="text-center"
+                        >
+                            <img
+                                class="card-img-top"
+                                [src]="gifSelected?.images.preview_gif.url"
+                                alt="Card image cap"
+                            >
+                        </div>
+                        <div class="text-center">
+                            <p class="text-info">Url:</p>
+                            <p class="card-description">{{gifSelected?.url}}</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
             </div>
         </div>
     </div>

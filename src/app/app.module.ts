@@ -1,6 +1,4 @@
 import { GifsComponent } from './gifs/gifs.component';
-import { AuthGuard } from './core/services/auth-guard.service';
-import { AuthService } from './core/services/auth.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
@@ -43,7 +41,7 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     GifsComponent
   ],
-  providers: [AuthService, AuthGuard, GifsService],
+  providers: [GifsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
